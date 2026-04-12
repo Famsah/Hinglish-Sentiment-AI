@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - ML_API_URL=http://ml-service:8000
+    depends_on:
+      - ml-service
+
+  ml-service:
+    build: ./api-ml-service
+    ports:
+      - "8000:8000"
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"

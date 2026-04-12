@@ -1,0 +1,248 @@
+/* ================= GLOBAL ================= */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo */
+.logo {
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* Hover */
+.nav-links a:hover {
+  color: #00c6ff;
+}
+
+/* Underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #00c6ff;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active link */
+.nav-links a.active {
+  color: #00c6ff;
+}
+
+/* Button */
+.btn {
+  background: #4caf50;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ================= LAYOUT ================= */
+.main {
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+}
+
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+}
+
+/* ================= INPUT ================= */
+textarea {
+  width: 80%;
+  height: 90px;
+  border-radius: 12px;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #00c6ff;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00e5ff;
+}
+
+/* ================= CARD ================= */
+.card {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* ================= SENTIMENT ================= */
+.status {
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.Positive {
+  background: #4caf50;
+}
+
+.Negative {
+  background: #f44336;
+}
+
+.Neutral {
+  background: #ffc107;
+  color: black;
+}
+
+/* ================= CONFIDENCE RING ================= */
+.ring .circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 8px solid #4caf50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* ================= METRICS (OLD BARS) ================= */
+.metrics {
+  margin-top: 30px;
+}
+
+.bar {
+  margin: 10px 0;
+}
+
+.progress {
+  height: 10px;
+  background: #4caf50;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.low {
+  width: 60%;
+  background: orange;
+}
+
+.lower {
+  width: 40%;
+  background: red;
+}
+
+/* ================= ANALYTICS ================= */
+.analytics {
+  padding: 40px;
+  display: grid;
+  gap: 25px;
+}
+
+/* ================= HEATMAP ================= */
+.heatmap {
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.heatmap td {
+  padding: 15px;
+  text-align: center;
+  background: rgba(0,255,150,0.2);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-weight: bold;
+}
+
+/* ================= ABOUT PAGE ================= */
+.about {
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.about h1 {
+  margin-bottom: 20px;
+}
+
+.about h2 {
+  margin-top: 20px;
+  color: #00c6ff;
+}
+
+.about ul,
+.about ol {
+  margin-left: 20px;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+
+  textarea {
+    width: 100%;
+  }
+}
