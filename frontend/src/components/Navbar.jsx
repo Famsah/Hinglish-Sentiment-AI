@@ -10,7 +10,6 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/analytics">Analytics</Link>
-        <span className="btn">Try Another</span>
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { analyze } from "../services/api";
 import Navbar from "../components/Navbar";
 import SentimentCard from "../components/SentimentCard";
-import MetricsChart from "../components/MetricsChart";
 import Footer from "../components/Footer";
 import "../styles.css";
 
@@ -26,48 +25,98 @@ export default function Home() {
       const res = await analyze(trimmedText);
       setResult(res);
     } catch (err) {
-      console.error("Analyze error:", err);
-      setError(err.response?.data?.error || "Failed to analyze. Please try again.");
+      setError("Failed to analyze. Try again.");
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleTextChange = (e) => {
-    setText(e.target.value);
-    if (error) setError(null);
   };
 
   return (
     <>
       <Navbar />
 
-      <div className="main">
-        <div className="left">
-          <h1>Hinglish Sentiment AI</h1>
+      {/* CENTERED CONTAINER */}
+      <div className="home-container">
 
+        <h1 className="home-title">Hinglish Sentiment AI</h1>
+
+        {/* INPUT BOX */}
+        <div className="input-box">
           <textarea
             placeholder="Enter your Hinglish text..."
             value={text}
-            onChange={handleTextChange}
+            onChange={(e) => setText(e.target.value)}
           />
-
-          {error && <div className="error" style={{color: 'red', margin: '10px 0'}}>{error}</div>}
-
-          <button 
-            onClick={handleAnalyze}
-            disabled={!text.trim() || loading}
-            style={{opacity: loading ? 0.7 : 1}}
-          >
-            {loading ? "Analyzing..." : "Analyze"}
-          </button>
-
-          <MetricsChart />
         </div>
 
-        <div className="right">
-          {result && <SentimentCard result={result} />}
+        {/* ERROR */}
+        {error && <p className="error">{error}</p>}
+
+        {/* BUTTON GROUP */}
+<div style={{ display: "flex", justifyContent: "center", gap: "12px", marginTop: "15px" }}>
+  
+  {/* Analyze */}
+  <button
+    className="analyze-btn"
+    onClick={handleAnalyze}
+    disabled={!text.trim() || loading}
+  >
+    {loading ? "Analyzing..." : "Analyze"}
+  </button>
+
+  {/* Try Another */}
+  <button
+    className="analyze-btn"
+    onClick={() => {
+      setText("");
+      setResult(null);
+      setError(null);
+    }}
+  >
+    Try Another
+  </button>
+
+  {/* Stop (only when loading) */}
+  {loading && (
+    <button
+      className="analyze-btn"
+      onClick={() => setLoading(false)}
+    >
+      Stop
+    </button>
+  )}
+
+</div>
+
+        {/* RESULT */}
+        {result && (
+          <div className="result-section">
+            <SentimentCard result={result} />
+          </div>
+        )}
+
+        {/* PERFORMANCE CARDS */}
+        <div className="performance-section">
+          <h3>Model Performance</h3>
+
+          <div className="perf-cards">
+            <div className="perf-card green">
+              <p>BERT</p>
+              <span>94%</span>
+            </div>
+
+            <div className="perf-card yellow">
+              <p>LSTM</p>
+              <span>81%</span>
+            </div>
+
+            <div className="perf-card blue">
+              <p>Traditional ML</p>
+              <span>66%</span>
+            </div>
+          </div>
         </div>
+
       </div>
 
       <Footer />

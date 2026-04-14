@@ -48,8 +48,14 @@ trainer = Trainer(
 # Train
 trainer.train()
 
+# Clean memory
+import gc
+import torch
+gc.collect()
+torch.cuda.empty_cache()
+
 # Save
-model.save_pretrained("../models/bert")
+model.save_pretrained("../models/bert", safe_serialization=False)
 tokenizer.save_pretrained("../models/bert")
 
 print("BERT model trained and saved!")

@@ -1,15 +1,9 @@
-import os
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
+import os
 
-# 🔥 FIXED PATH
-current_dir = os.path.dirname(__file__)
-
-model_path = os.path.abspath(
-    os.path.join(current_dir, "../models/bert")
-)
-
-print("Loading model from:", model_path)  # debug
+# Load model
+model_path = os.path.abspath("../models/bert")
 
 tokenizer = BertTokenizer.from_pretrained(model_path)
 model = BertForSequenceClassification.from_pretrained(model_path)

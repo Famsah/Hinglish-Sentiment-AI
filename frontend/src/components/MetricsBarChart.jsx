@@ -44,7 +44,7 @@ const options = {
         color: "white", // x-axis text
       },
       grid: {
-        color: "rgba(255,255,255,0.1)",
+        color: "rgba(50,50,50,0.1)",
       },
     },
     y: {
@@ -52,7 +52,7 @@ const options = {
         color: "white", // y-axis text
       },
       grid: {
-        color: "rgba(255,255,255,0.1)",
+        color: "rgba(50,50,50,0.1)",
       },
     },
   },
