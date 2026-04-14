@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from model_loader import predict
+import json
+import os
 
 app = FastAPI()
 
@@ -16,13 +18,11 @@ def get_prediction(req: TextRequest):
     result = predict(req.text)
     return result
 
-import json
-import os
-
 @app.get("/metrics")
 def get_metrics():
-    path = os.path.abspath("../ml-model/models/metrics.json")
-    
+    current_dir = os.path.dirname(__file__)
+    path = os.path.join(current_dir, "metrics.json")
+
     with open(path) as f:
         data = json.load(f)
 
